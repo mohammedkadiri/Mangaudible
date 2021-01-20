@@ -79,7 +79,7 @@ with open('../../Documents/Mangaudible/titles.txt') as f:
     manga_titles = [line.rstrip('\n') for line in f]
 
 chapters = 3
-filepath = "C:/Users/Manga/"
+filepath = "C:/Users/manga/"
 
 manga = scraper(path, manga_titles, chapters)
 create_folders(filepath, manga_titles)
