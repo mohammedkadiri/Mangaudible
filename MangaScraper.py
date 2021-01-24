@@ -47,7 +47,12 @@ def create_folders(filepath, manga_titles):
     else:
         for title in manga_titles:
             full_path = "{0}{1}".format(filepath, title)
+            chapter1_path = "{0}{1}/chapter1".format(filepath, title)
+            chapter2_path = "{0}{1}/chapter2".format(filepath, title)
             os.makedirs(full_path)
+            os.makedirs(chapter1_path)
+            os.makedirs(chapter2_path)
+
 
 
 def download_manga(manga):
@@ -61,7 +66,7 @@ def download_manga(manga):
         print(key)
         page = 1
         for url in manga[key]:
-            filename = "C:/Users/Manga/{0}/{0}_{1}.jpg".format(key, page)
+            filename = "C:/Users/Manga/{0}/{1}.jpg".format(key, page)
             file_stream = requests.get(url, stream=True)
             with open(filename, 'wb') as f:
                 for data in file_stream:
