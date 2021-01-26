@@ -32,6 +32,7 @@ def scraper(path, manga_titles, chapters):
         manga[name] = img_urls
     return manga
 
+
 def create_folders(filepath, manga_titles):
     '''
     Create folders in filepath.
@@ -54,7 +55,6 @@ def create_folders(filepath, manga_titles):
             os.makedirs(chapter2_path)
 
 
-
 def download_manga(manga):
     '''
     Downloads and stores each manga page.
@@ -75,36 +75,16 @@ def download_manga(manga):
         print("Download complete")
 
 
-
-
-with open('../../Documents/Mangaudible/mangas.txt') as f:
+with open('../../Documents/Project/Mangaudible/mangas.txt') as f:
     path = [line.rstrip('\n') for line in f]
 
-with open('../../Documents/Mangaudible/titles.txt') as f:
+with open('../../Documents/Project/Mangaudible/titles.txt') as f:
     manga_titles = [line.rstrip('\n') for line in f]
 
 chapters = 3
 filepath = "C:/Users/manga/"
 
 manga = scraper(path, manga_titles, chapters)
-create_folders(filepath, manga_titles)
-download_manga(manga)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(manga)
+# create_folders(filepath, manga_titles)
+# download_manga(manga)
