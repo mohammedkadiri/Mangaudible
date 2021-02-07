@@ -1,40 +1,61 @@
-body {
-    background-color:#1c2029;
-}
-
 .nav-container {
-    background-color: #69369E;
+  background-color: #69369E;
 }
 
 .me-auto {
-    margin: auto;
+  margin: auto;
 }
 .navbar-nav .nav-link {
-    margin-left:30px;
+  margin-left:30px;
 }
 
 .logo {
-    width: 35px;
-    height:35px;
+width: 35px;
+height:35px;
 }
-  
-  .row {
-    margin-top: 1rem;
-    margin-bottom: 3rem;
-  
-  }
-  
-  body {
-    background-color:#1c2029;
-  }
-  
-  p, p span {
-    color:white
-  }
-  
-  .carousel-indicators li {
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    background-color: #69369E;
-  }
+
+.row {
+margin-top: 1rem;
+margin-bottom: 3rem;
+
+}
+
+body {
+background-color:#1c2029;
+}
+
+p, p span {
+color:white
+}
+
+.carousel-indicators li {
+width: 10px;
+height: 10px;
+border-radius: 100%;
+background-color: #a636ae;
+}
+
+
+.carousel-indicators {
+margin-left: 5%;
+}
+
+.nav-link {
+transition: all 0.4s linear;
+}
+
+.nav-link::after {
+width:0px;
+transition: all 0.4s linear;
+}
+.nav-link:hover {
+border-bottom: 3px solid #a73870;
+width: 70%;
+}
+
+
+@media(max-width: 992px){
+.nav-link:hover {
+  width: 10%;
+}
+}
