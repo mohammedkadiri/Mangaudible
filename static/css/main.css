@@ -13,7 +13,28 @@ body {
     margin-left:30px;
 }
 
-img {
+.logo {
     width: 35px;
     height:35px;
 }
+  
+  .row {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  
+  }
+  
+  body {
+    background-color:#1c2029;
+  }
+  
+  p, p span {
+    color:white
+  }
+  
+  .carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: #69369E;
+  }
