@@ -14,7 +14,9 @@
         {%for title in data%}
             <div class="container item-container">
             <div class="container1 ">
-                <img src="{{title.9}}" class="img-container"alt="">
+                <a href="/{{title.1}}">
+                  <img src="{{title.9}}" class="img-container"alt="">
+                </a>
                 <div class = "container2">
                 <p>Name: {{title.1}}</p>
                 <p>Description: <br><br>{{title.6}} </p>
