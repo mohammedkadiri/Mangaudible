@@ -69,7 +69,8 @@ margin-top: 1%;
 
 display: flex;
 margin-bottom: 1%;
-text-align: left;
+margin-top:1%;
+align-items: center;
 
 }
 
@@ -77,7 +78,7 @@ text-align: left;
  flex-grow: 1;
  padding:1%;
  margin-left: 2%;
- text-align: left;
+ text-align: justify;
 
 }
 
@@ -115,4 +116,110 @@ margin-bottom: 2%;
 #Category {
 margin-left: 8%;
 margin-top: 2%;
+}
+
+
+.left-box {
+  background-color: purple;
+  width: 500px;
+  height: 500px;
+  
+}
+
+.left-holder{
+ background-color:none;
+ display: inline-flex;
+ flex-direction: row;
+ align-items: center;
+ width: 56%;
+ margin-top:2%;
+ margin-left: 1%;
+ margin-bottom: 10%;
+}
+
+
+
+.holder {
+  display: flex;
+  background-color: none;
+}
+
+.right-holder{
+  background-color: none;
+  margin-right: 2%;
+  flex-direction: row;
+  width:40%;
+  margin-left: 1%;
+  margin-top:2%;
+  margin-bottom: 10%;
+ }
+
+ .process-text {
+   margin-top: 1%;
+  background-color: #69369E;
+   height: 90%;
+ }
+ 
+
+.page {
+  height: 100%;
+  width:100%;
+  border: 12px solid #69369E;
+}
+
+.page-box {
+  height: 100%;
+  width: 80%;
+  background-color: purple;
+  margin:10px;
+  align-self: center;
+}
+
+.box-sm {
+  height: 5%;
+  padding: 1%;
+  width:10%;
+  background-color: #69369E;
+  border-radius: 10%;
+}
+.btn {
+  height:50px;
+  width:100px;
+  margin-left: 2%;
+  background-color: #0abfbf;
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+
+}
+
+.chapters {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.form-select {
+  line-height: 1.0;
+  font-size: 1rem;
+  color: #69369E;
+}
+
+#manga-title {
+  margin-top: 1%;
+  color: #0abfbf;
+}
+
+.title-info, #manga-title {
+  margin-left: 1%;
+}
+
+/* .progress {
+  display: none;
+} */
+
+.progress-bar-striped {
+  background-color: #0abfbf;
+  width: 10%;
 }
