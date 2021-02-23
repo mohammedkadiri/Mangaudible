@@ -11,17 +11,16 @@
 
   <div class="container-fluid">
     <h1 id="manga-title">
-        {{data.0}}- {{data.1}}
+        {{data.0}}- <span class="chapter-num">{{data.1}}</span>
     </h1>
 
     <p class="title-info">
-        <a href="">Home</a>
+        <a href="/index.html">Home</a>
         /
-        <a href="">All Mangas</a>
+        <a href="/manga/{{data.0}}" class="current">{{data.0}}</a>
         /
-        <a href="" class="current">{{data.0}}</a>
-        /
-        {{data.1}}
+        Page
+        <span class="page-num"></span>
     </p>
 
     <div class="page-container">
@@ -41,8 +40,8 @@
     </div>
     <div class="holder">
         <div class="left-holder">
-            <button type="button" class="btn btn-secondary">
-                Next
+            <button type="button" class="prev btn btn-secondary">
+                Prev
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
@@ -53,8 +52,8 @@
             <div class="page-box">
                 <img src="{{data.3}}" class="page" alt="">
             </div>
-            <button type="button" class="btn btn-secondary">
-                Prev
+            <button type="button" class="next btn btn-secondary">
+                Next
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-arrow-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
@@ -87,4 +86,5 @@
       <span class="text-muted">Copyrights and trademarks for the manga, and other promotional materials are held by their respective owners and their use is allowed under the fair use clause of the Copyright Law. © 2021 Mangaudible.</span>
     </div>
   </footer>
+
 {% endblock %}
