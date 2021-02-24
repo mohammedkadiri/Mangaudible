@@ -1,6 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from flask.json import jsonify
 from flask_mysqldb import MySQL
 from gcs import page_count, retrieve_url
+import json
 
 app = Flask(__name__)
 
@@ -74,6 +76,18 @@ def chapter(manga_name, chapter, page):
     url = url.replace(" ", "%20")
     values = [manga_name, chapter, page, url, pages]
     return render_template('chapter.html', data = values)
+
+@app.route('/process',methods=['GET', 'POST'])
+def process():
+    rf = request.form
+    for key in rf.keys():
+        data = key
+    data_dic = json.loads(data)
+    temp = data_dic['value']
+    resp_dic = {'msg': temp + 'hi'}
+    resp = jsonify(resp_dic)
+    resp.headers['Access-Control-Allow-Origin']='*'
+    return resp
 
 
 
