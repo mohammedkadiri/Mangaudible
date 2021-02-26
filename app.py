@@ -38,27 +38,32 @@ def mangaQuery(name):
 def home():
     return render_template('index.html')
 
+
 @app.route('/action.html')
 @app.route('/manga/action.html')
-def action():
+@app.route('/manga/<comic>/<chapters>/action.html')
+def action(comic = None, chapters= None):
     query = categoryQuery('action')
     return render_template('action.html', data = getData(query))
 
 @app.route('/adventure.html')
 @app.route('/manga/adventure.html')
-def adventure():
+@app.route('/manga/<comic>/<chapters>/adventure.html')
+def adventure(comic = None, chapters=None):
     query = categoryQuery('adventure')
     return render_template('adventure.html', data = getData(query))
 
 @app.route('/comedy.html')
 @app.route('/manga/comedy.html')
-def comedy():
+@app.route('/manga/<comic>/<chapters>/comedy.html')
+def comedy(comic = None, chapters= None):
     query = categoryQuery('comedy')
     return render_template('adventure.html', data = getData(query))
 
 @app.route('/sport.html')
 @app.route('/manga/sport.html')
-def sport():
+@app.route('/manga/<comic>/<chapters>/sport.html')
+def sport(comic = None, chapters= None):
     query = categoryQuery('sport')
     return render_template('sport.html', data = getData(query))
 
