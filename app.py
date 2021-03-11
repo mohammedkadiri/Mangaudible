@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from flask.json import jsonify
 from flask_mysqldb import MySQL
 from gcs import page_count, retrieve_url
+from PanelExtractor import retrieve_panel_text, detect_document_uri, calculate_accuracy, translate_ocr_text
 import json
 
 app = Flask(__name__)
@@ -89,7 +90,13 @@ def process():
         data = key
     data_dic = json.loads(data)
     temp = data_dic['value']
-    resp_dic = {'msg': temp + 'hi'}
+    temp = temp.replace(" ", "%20")
+    temp = temp.replace("cloud.google", "googleapis")
+    panel_text = retrieve_panel_text(temp)
+    google_ocr_text = detect_document_uri(temp)
+    accuracy = calculate_accuracy(panel_text, google_ocr_text)
+    translated_panel_text = translate_ocr_text(google_ocr_text)   
+    resp_dic = {'msg': "Accuracy: " + str(accuracy) +"%Text:\n" + translated_panel_text}
     resp = jsonify(resp_dic)
     resp.headers['Access-Control-Allow-Origin']='*'
     return resp
