@@ -71,7 +71,11 @@ def sport(comic = None, chapters= None):
 @app.route('/manga/<string:manga_name>')
 def manga(manga_name):
     query = mangaQuery(manga_name)
-    return render_template('manga.html', data = getData(query))
+    data =  getData(query)
+    if len(data) == 0:
+        return "<html><body><h1>Not Available</h1></body></html>"
+    else:
+        return render_template('manga.html', data = data)
 
 
 @app.route('/manga/<string:manga_name>/<string:chapter>/<string:page>')
