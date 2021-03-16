@@ -1,46 +1,39 @@
-{% extends 'base.html' %}
-
-{% block head %}
-    <title>Mangaudible</title>
-{% endblock %}
-
-{% block body %}
+{% extends 'base.html' %} {% block head %}
+<title>Mangaudible</title>
+{% endblock %} {% block body %}
 
 <main>
 
 
-  <div class="container-fluid">
-    <h1 id="manga-title">
-        {{data.0}}- <span class="chapter-num">{{data.1}}</span>
-    </h1>
+    <div class="container-fluid">
+        <h1 id="manga-title">
+            {{data.0}}- <span class="chapter-num">{{data.1}}</span>
+        </h1>
 
-    <p class="title-info">
-        <a href="/index.html">Home</a>
-        /
-        <a href="/manga/{{data.0}}" class="current">{{data.0}}</a>
-        /
-        Page
-        <span class="page-num"></span>
-    </p>
+        <p class="title-info">
+            <a href="/index.html">Home</a> /
+            <a href="/manga/{{data.0}}" class="current">{{data.0 }}</a> / Page
+            <span class="page-num"></span>
+        </p>
 
-    <div class="page-container">
-        <div class="chapters">
-            <select id="chapter" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <div class="page-container">
+            <div class="chapters">
+                <select id="chapter" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                 <option value="chapter1" selected>Chapter 1</option>
                 <option value="chapter2">Chapter 2</option>
             </select>
-        </div>
-        <div class="pages">
-            <select id="pager" class=" form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            </div>
+            <div class="pages">
+                <select id="pager" class=" form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                 {%for num in range(1, data.4) %}
                     <option value="{{num}}">{{num}}</option>
                 {%endfor%}
             </select>
+            </div>
         </div>
-    </div>
-    <div class="holder">
-        <div class="left-holder">
-            <button type="button" class="prev btn btn-secondary">
+        <div class="holder">
+            <div class="left-holder">
+                <button type="button" class="prev btn btn-secondary">
                 Prev
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -49,10 +42,10 @@
                 </svg>
                 <span class="visually-hidden">Button</span>
             </button>
-            <div class="page-box">
-                <img src="{{data.3}}" class="page" alt="">
-            </div>
-            <button type="button" class="next btn btn-secondary">
+                <div class="page-box">
+                    <img src="{{data.3}}" class="page" alt="">
+                </div>
+                <button type="button" class="next btn btn-secondary">
                 Next
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-arrow-right" viewBox="0 0 16 16">
@@ -61,30 +54,30 @@
                 </svg>
                 <span class="visually-hidden">Button</span>
             </button>
-            <button class="btn" id="process" type="submit">Process</button>
-        </div>
-        
-        <div class="right-holder">
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-                    <span id="feedback" style="color:white;">Processing</span>
+                <button class="btn" id="process" type="submit">Process</button>
+            </div>
+
+            <div class="right-holder">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+                        <span id="feedback" style="color:white;">Processing</span>
+                    </div>
                 </div>
-              </div>
-       
-              <div class="process-text">
-                <p class="process-data">text</p>
-              </div>
+
+                <div class="process-text">
+                    <p class="process-data">text</p>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-    
+
 </main>
-  
-  
-  <footer class="footer mt-auto py-3 bg-light">
+
+
+<footer class="footer mt-auto py-3 bg-light">
     <div class="container">
-      <span class="text-muted">Copyrights and trademarks for the manga, and other promotional materials are held by their respective owners and their use is allowed under the fair use clause of the Copyright Law. © 2021 Mangaudible.</span>
+        <span class="text-muted">Copyrights and trademarks for the manga, and other promotional materials are held by their respective owners and their use is allowed under the fair use clause of the Copyright Law. © 2021 Mangaudible.</span>
     </div>
-  </footer>
+</footer>
 
 {% endblock %}

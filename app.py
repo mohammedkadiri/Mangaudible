@@ -29,8 +29,14 @@ def categoryQuery(category):
     return query
 
 def mangaQuery(name):
-    query = 'select * from manga where manga.Name or manga.Ename  = \'{0}\''.format(name)
+    query = 'select * from manga where manga.Name  = \'{0}\''.format(name)
     return query
+
+# @main.template_filter('replace_space')
+# def replace_space(url):
+#     url = url.replace("%20", " ")
+#     return url
+
 
 
 
@@ -45,29 +51,29 @@ def home(subpath = None):
 
 @app.route('/action.html')
 @app.route('/manga/action.html')
-@app.route('/manga/<path:subpath>/action.html')
-def action(subpath = None):
+@app.route('/manga/<comic>/<chapters>/action.html')
+def action(comic = None, chapters= None):
     query = categoryQuery('action')
     return render_template('action.html', data = getData(query))
 
 @app.route('/adventure.html')
 @app.route('/manga/adventure.html')
-@app.route('/manga/<path:subpath>/adventure.html')
-def adventure(subpath = None):
+@app.route('/manga/<comic>/<chapters>/adventure.html')
+def adventure(comic = None, chapters=None):
     query = categoryQuery('adventure')
     return render_template('adventure.html', data = getData(query))
 
 @app.route('/comedy.html')
 @app.route('/manga/comedy.html')
-@app.route('/manga/<path:subpath>/comedy.html')
-def comedy(subpath = None):
+@app.route('/manga/<comic>/<chapters>/comedy.html')
+def comedy(comic = None, chapters= None):
     query = categoryQuery('comedy')
     return render_template('adventure.html', data = getData(query))
 
 @app.route('/sport.html')
 @app.route('/manga/sport.html')
-@app.route('/manga/<path:subpath>/sport.html')
-def sport(subpath = None):
+@app.route('/manga/<comic>/<chapters>/sport.html')
+def sport(comic = None, chapters= None):
     query = categoryQuery('sport')
     return render_template('sport.html', data = getData(query))
 
@@ -77,6 +83,7 @@ def sport(subpath = None):
 def manga(manga_name = None):
     query = mangaQuery(manga_name)
     data =  getData(query)
+    # print(manga_name)
     if len(data) == 0:
         return redirect(url_for('unavailable')) 
     return render_template('manga.html', data = data)
@@ -84,7 +91,6 @@ def manga(manga_name = None):
 @app.route('/unavailable')
 def unavailable():
     return render_template('unavailable.html')
-
 
 
 @app.route('/manga/<string:manga_name>/<string:chapter>/<string:page>')
