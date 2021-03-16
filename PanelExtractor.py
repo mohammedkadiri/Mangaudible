@@ -15,13 +15,13 @@ pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesserac
 def url_to_image(url):
     resp = ur.urlopen(url)
     image = np.asarray(bytearray(resp.read()), dtype="uint8")
-    image = cv.imdecode(image, cv.IMREAD_UNCHANGED)
+    image = cv.imdecode(image, cv.IMREAD_GRAYSCALE)
     return image
 
 def panelExtraction(temp):
     img = temp
     img_copy = img.copy()
-    gray = cv.cvtColor(img_copy, cv.COLOR_BGR2GRAY)
+    gray = img_copy
     size = list(img_copy.shape[:2])
     size.reverse()
     # print("Width: "+str(size[0]) + " Height: "+str(size[1]))

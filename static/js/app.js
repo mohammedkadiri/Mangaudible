@@ -10,6 +10,7 @@ var prev = document.querySelector('.prev');
 var next = document.querySelector('.next');
 var search_box = document.querySelector('#search-box');
 var search_value = document.querySelector('.form-control');
+var timer = null;
 
 
 
@@ -105,10 +106,17 @@ $(document).ready(() => {
 
 
     $("#process").click(function() {
+        $(".process-data").html(" ");
         var appdir = '/process';
         var send_msg = '<p>Sending image url</p>';
         update();
         console.log(send_msg);
+
+        $("#process").toggleClass("progress-bar-clicked");
+        $(".progress-bar-striped").css("width", 10 + "%");
+        let feedback = document.querySelector("#feedback");
+        feedback.textContent = "Processing";
+
         $.ajax({
             type: "POST",
             url: server + appdir,
@@ -116,7 +124,13 @@ $(document).ready(() => {
             dataType: 'json'
         }).done(function(data) {
             console.log(data);
+            $(".progress-bar-striped").css("width", 100 + "%");
             $(".process-data").html(data['msg']);
+            feedback.textContent = "Processed";
+            $("#process").toggleClass("progress-bar-clicked");
         });
+
+
+
     });
 });
