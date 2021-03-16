@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
+from flask.helpers import url_for
 from flask.json import jsonify
 from flask_mysqldb import MySQL
+from werkzeug.utils import redirect
 from gcs import page_count, retrieve_url
 from PanelExtractor import retrieve_panel_text, detect_document_uri, calculate_accuracy, translate_ocr_text
 import json
@@ -27,7 +29,7 @@ def categoryQuery(category):
     return query
 
 def mangaQuery(name):
-    query = 'select * from manga where manga.Name = \'{0}\''.format(name)
+    query = 'select * from manga where manga.Name or manga.Ename  = \'{0}\''.format(name)
     return query
 
 
@@ -36,46 +38,53 @@ def mangaQuery(name):
 @app.route('/')
 @app.route('/index.html')
 @app.route('/manga/index.html')
-def home():
+@app.route('/manga/<path:subpath>/index.html')
+def home(subpath = None):
     return render_template('index.html')
 
 
 @app.route('/action.html')
 @app.route('/manga/action.html')
-@app.route('/manga/<comic>/<chapters>/action.html')
-def action(comic = None, chapters= None):
+@app.route('/manga/<path:subpath>/action.html')
+def action(subpath = None):
     query = categoryQuery('action')
     return render_template('action.html', data = getData(query))
 
 @app.route('/adventure.html')
 @app.route('/manga/adventure.html')
-@app.route('/manga/<comic>/<chapters>/adventure.html')
-def adventure(comic = None, chapters=None):
+@app.route('/manga/<path:subpath>/adventure.html')
+def adventure(subpath = None):
     query = categoryQuery('adventure')
     return render_template('adventure.html', data = getData(query))
 
 @app.route('/comedy.html')
 @app.route('/manga/comedy.html')
-@app.route('/manga/<comic>/<chapters>/comedy.html')
-def comedy(comic = None, chapters= None):
+@app.route('/manga/<path:subpath>/comedy.html')
+def comedy(subpath = None):
     query = categoryQuery('comedy')
     return render_template('adventure.html', data = getData(query))
 
 @app.route('/sport.html')
 @app.route('/manga/sport.html')
-@app.route('/manga/<comic>/<chapters>/sport.html')
-def sport(comic = None, chapters= None):
+@app.route('/manga/<path:subpath>/sport.html')
+def sport(subpath = None):
     query = categoryQuery('sport')
     return render_template('sport.html', data = getData(query))
 
-@app.route('/manga/<string:manga_name>')
-def manga(manga_name):
+
+
+@app.route('/manga/<string:manga_name>', methods=['GET', 'POST'])
+def manga(manga_name = None):
     query = mangaQuery(manga_name)
     data =  getData(query)
     if len(data) == 0:
-        return "<html><body><h1>Not Available</h1></body></html>"
-    else:
-        return render_template('manga.html', data = data)
+        return redirect(url_for('unavailable')) 
+    return render_template('manga.html', data = data)
+
+@app.route('/unavailable')
+def unavailable():
+    return render_template('unavailable.html')
+
 
 
 @app.route('/manga/<string:manga_name>/<string:chapter>/<string:page>')

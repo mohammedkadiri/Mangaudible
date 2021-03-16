@@ -12,9 +12,6 @@ var search_box = document.querySelector('#search-box');
 var search_value = document.querySelector('.form-control');
 
 
-search_box.addEventListener('submit', () => {
-    //console.log("The term searched for was " + search_value.value);
-});
 
 
 
@@ -22,6 +19,12 @@ search_box.addEventListener('submit', () => {
 var server = "http://127.0.0.1:5000";
 var img_data = { 'value': ["text"] };
 var img_url = $(".page").attr('src');
+
+
+search_box.addEventListener('submit', () => {
+    var appdir = '/manga/' + search_value.value;
+    search_box.action = appdir;
+});
 
 
 $(document).ready(() => {
