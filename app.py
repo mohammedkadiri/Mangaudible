@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request
 from flask.helpers import url_for
 from flask.json import jsonify
+from PIL import Image
+import base64
+import io
 from flask_mysqldb import MySQL
 from werkzeug.utils import redirect
 from gcs import page_count, retrieve_url
-from PanelExtractor import retrieve_panel_text, detect_document_uri, calculate_accuracy, translate_ocr_text
+from PanelExtractor import retrieve_panel_text, detect_document_uri, calculate_accuracy, translate_ocr_text, process_image
 import json
 
 app = Flask(__name__)
@@ -105,17 +108,26 @@ def chapter(manga_name, chapter, page):
 @app.route('/process',methods=['GET', 'POST'])
 def process():
     rf = request.form
+
     for key in rf.keys():
         data = key
     data_dic = json.loads(data)
     temp = data_dic['value']
     temp = temp.replace(" ", "%20")
     temp = temp.replace("cloud.google", "googleapis")
-    panel_text = retrieve_panel_text(temp)
-    google_ocr_text = detect_document_uri(temp)
-    accuracy = calculate_accuracy(panel_text, google_ocr_text)
-    translated_panel_text = translate_ocr_text(google_ocr_text)   
-    resp_dic = {'msg': "Accuracy: " + str(accuracy) +"%Text:\n" + translated_panel_text}
+    # panel_text = retrieve_panel_text(temp)
+    # google_ocr_text = detect_document_uri(temp)
+    # accuracy = calculate_accuracy(panel_text, google_ocr_text)
+    # translated_panel_text = translate_ocr_text(google_ocr_text)
+    img = process_image(temp)
+    im_pil = Image.fromarray(img)
+    data = io.BytesIO()
+    im_pil.save(data, "PNG")
+    encoded_img_data = base64.b64encode(data.getvalue())
+    img_data=encoded_img_data.decode('utf-8')
+    # print(encoded_img_data)
+    # resp_dic = {'msg': "Accuracy: " + str(accuracy) +"%Text:\n" + translated_panel_text}
+    resp_dic = {'msg': img_data}
     resp = jsonify(resp_dic)
     resp.headers['Access-Control-Allow-Origin']='*'
     return resp

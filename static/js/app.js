@@ -10,9 +10,20 @@ var prev = document.querySelector('.prev');
 var next = document.querySelector('.next');
 var search_box = document.querySelector('#search-box');
 var search_value = document.querySelector('.form-control');
+var play_btn = document.querySelector('.play-btn');
+var pause_btn = document.querySelector('.pause-btn');
+var x = document.querySelector('#myAudio');
 var timer = null;
 
 
+play_btn.addEventListener("click", function() {
+    x.play();
+});
+
+
+pause_btn.addEventListener("click", function() {
+    x.pause();
+});
 
 
 
@@ -123,9 +134,10 @@ $(document).ready(() => {
             data: JSON.stringify(img_data),
             dataType: 'json'
         }).done(function(data) {
-            console.log(data);
             $(".progress-bar-striped").css("width", 100 + "%");
-            $(".process-data").html(data['msg']);
+            let img_url = `<img src="data:image/png;base64,${data['msg']}" style="width:600px;height:800px">`;
+            $(".process-data").after(img_url);
+            // $(".process-data").html(data['msg']);
             feedback.textContent = "Processed";
             $("#process").toggleClass("progress-bar-clicked");
         });

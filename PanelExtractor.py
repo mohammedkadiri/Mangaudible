@@ -6,8 +6,10 @@ import sys
 import math
 import re
 import pytesseract
+from google_trans_new import google_translator
 from google.cloud import vision
 from googletrans import Translator
+
 
 pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
 
@@ -140,9 +142,75 @@ def translate_ocr_text(google_ocr_text):
     result = translator.translate(google_ocr_text, dest='en')
     return result.text
 
+def process_image(url):
+    image = url_to_image(url)
+    # gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY) # grayscale
+    thresh = cv.threshold(image, 180, 255, cv.THRESH_BINARY_INV + cv.THRESH_OTSU)[1]
+    comp = cv.connectedComponentsWithStats(thresh)
+    numLabels = comp[0]
+    labels = comp[1]
+    stats = comp[2]
+    areas = stats[:, 4]
+    maxArea = 200
+    minArea = 30
+    for compLabel in range(1, numLabels):
+        if areas[compLabel] > maxArea or areas[compLabel] < minArea:
+            labels[labels == compLabel] = 0
+    labels[labels > 0] = 1
+    kernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (30, 30))
+    dilate_text = cv.morphologyEx(labels.astype(np.uint8), cv.MORPH_DILATE, kernel)
+    comp = cv.connectedComponentsWithStats(dilate_text)
+    numLabels = comp[0]
+    labels = comp[1]
+    stats = comp[2]
+    areas = stats[:, 4]
+
+    components = []
+    for compLabel in range(1, numLabels):
+        x1, y1 = stats[compLabel, 0], stats[compLabel, 1]
+        x2, y2 = (stats[compLabel, 0]+stats[compLabel, 2]), (stats[compLabel, 1]+stats[compLabel, 3])
+        # cv.rectangle(image, (x1, y1), (x2, y2 + 10), (0, 0, 255), 2)
+        # Have rect coordinates
+        # (y1:y2, x1, x2)
+        components.append((x1, y1, x2, y2))
 
 
-# url = "https://storage.cloud.google.com/mangaudible/manga/Grand%20Blue/chapter1/5.jpg"
+    # plt.imshow(image)
+    # plt.show()
+
+    translator = google_translator()
+
+    for panel in components:
+        x1,y1,x2,y2 = panel
+        temp =  image[y1:y2,x1:x2]
+        custom_oem_psm_config = r'--psm 5'
+        text = pytesseract.image_to_string(temp, lang='jpn_vert', config=custom_oem_psm_config)
+        pattern = r'[a-zA-Z0-9?|!.,*()-:/\\]'
+        text = re.sub(pattern, '', text)
+        text = re.sub('\s+', ' ', text)
+        words = text.replace(" ", "")
+        result = translator.translate(words, lang_tgt='en')
+        # Check if the component actually contains actual jp chars
+        # if words.isalpha():
+        # print(result)
+        org = (int((x1 + x2) / 2), int((y1 + y2) / 2))
+        (width, height), baseline = cv.getTextSize(result, cv.FONT_HERSHEY_SIMPLEX, 0.7, 2)
+        # cv.rectangle(image, (x1, y1), (x2-20, y2-30), (255, 255, 255), cv.FILLED)
+        cv.rectangle(image, (org[0], org[1] - height), (org[0] + width, org[1]), (255, 255, 255), cv.FILLED)
+        image = cv.putText(image, result, (org[0] - 20, org[1]), cv.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+
+    return image
+
+
+# url = "https://storage.googleapis.com/mangaudible/manga/Grand%20Blue/chapter1/10.jpg"
+
+# img = process_image(url)
+
+# cv.imshow("image", img)
+# cv.waitKey(0)
+
+
+
 # panel_text = retrieve_panel_text(url)
 # print(panel_text)
 # google_ocr_text = detect_document_uri(url)

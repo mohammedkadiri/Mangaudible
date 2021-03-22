@@ -219,3 +219,8 @@ a {
     width: 10%;
     color: white;
 }
+
+.play-btn:hover,
+.pause-btn:hover {
+    color: white;
+}
