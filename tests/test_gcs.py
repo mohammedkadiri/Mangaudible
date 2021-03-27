@@ -2,7 +2,7 @@ import sys
 import unittest
 from google.cloud import exceptions
 # from modules.gcs import retrieve_url
-sys.path.insert(1, r'C:\Users\movil\Documents\Project\Mangaudible\project\modules')
+sys.path.insert(1, r'C:\Users\movil\Documents\Project\Mangaudible\modules')
 import gcs
 
 class TestGcs(unittest.TestCase):
