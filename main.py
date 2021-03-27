@@ -14,8 +14,8 @@ from flask import Flask, render_template, request
 from flask.helpers import url_for
 from flask.json import jsonify
 from PIL import Image
-from flask_mysqldb import MySQL
 from werkzeug.utils import redirect
+import create_database as db
 
 # Local application imports
 from modules.gcs import page_count, retrieve_url
@@ -25,20 +25,14 @@ from modules.PanelExtractor import retrieve_panel_text, detect_document_uri, cal
 
 app = Flask(__name__)
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'manga'
+# app.config['MYSQL_HOST'] = 'localhost'
+# app.config['MYSQL_USER'] = 'root'
+# app.config['MYSQL_PASSWORD'] = ''
+# app.config['MYSQL_DB'] = 'manga'
 
-mysql = MySQL(app)
+# mysql = MySQL(app)
 
 
-
-def getData(query):
-    cur = mysql.connection.cursor()
-    cur.execute(query)
-    fetchdata = cur.fetchall()
-    return fetchdata
 
 def categoryQuery(category):
     query = 'select * from manga join manga_genre on manga_genre.manga_id = manga.ID join genre on genre.ID = manga_genre.genre_id where genre.Category =\'{0}\''.format(category)
@@ -54,9 +48,6 @@ def mangaQuery(name):
 #     return url
 
 
-
-
-
 @app.route('/')
 @app.route('/index.html')
 @app.route('/manga/index.html')
@@ -70,35 +61,35 @@ def home(subpath = None):
 @app.route('/manga/<comic>/<chapters>/action.html')
 def action(comic = None, chapters= None):
     query = categoryQuery('action')
-    return render_template('action.html', data = getData(query))
+    return render_template('action.html', data = db.getData(query))
 
 @app.route('/adventure.html')
 @app.route('/manga/adventure.html')
 @app.route('/manga/<comic>/<chapters>/adventure.html')
 def adventure(comic = None, chapters=None):
     query = categoryQuery('adventure')
-    return render_template('adventure.html', data = getData(query))
+    return render_template('adventure.html', data = db.getData(query))
 
 @app.route('/comedy.html')
 @app.route('/manga/comedy.html')
 @app.route('/manga/<comic>/<chapters>/comedy.html')
 def comedy(comic = None, chapters= None):
     query = categoryQuery('comedy')
-    return render_template('adventure.html', data = getData(query))
+    return render_template('adventure.html', data = db.getData(query))
 
 @app.route('/sport.html')
 @app.route('/manga/sport.html')
 @app.route('/manga/<comic>/<chapters>/sport.html')
 def sport(comic = None, chapters= None):
     query = categoryQuery('sport')
-    return render_template('sport.html', data = getData(query))
+    return render_template('sport.html', data = db.getData(query))
 
 
 
 @app.route('/manga/<string:manga_name>', methods=['GET', 'POST'])
 def manga(manga_name = None):
     query = mangaQuery(manga_name)
-    data =  getData(query)
+    data =  db.getData(query)
     # print(manga_name)
     if len(data) == 0:
         return redirect(url_for('unavailable')) 
@@ -149,5 +140,5 @@ def process():
 #app.run
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="127.0.0.1", port=port)
  
