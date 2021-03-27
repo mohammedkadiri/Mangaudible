@@ -195,7 +195,7 @@ def process_image(url):
         # print(result)
         org = (int((x1 + x2) / 2), int((y1 + y2) / 2))
         (width, height), baseline = cv.getTextSize(result, cv.FONT_HERSHEY_SIMPLEX, 0.7, 2)
-        cv.rectangle(image, (x1, y1), (x2-20, y2-30), (255, 255, 255), cv.FILLED)
+        # cv.rectangle(image, (x1, y1), (x2-20, y2-30), (255, 255, 255), cv.FILLED)
         cv.rectangle(image, (org[0], org[1] - height), (org[0] + width, org[1]), (255, 255, 255), cv.FILLED)
         image = cv.putText(image, result, (org[0] - 20, org[1]), cv.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
