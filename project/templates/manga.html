@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Mangaudible</title>
+{% endblock %}
+
+{% block body %}
+
+<main>
+
+    <div class="container main-container">
+  
+        
+        <div class="container item-page-container">
+          <div class="container1 rounded">
+            <img src="{{data.0.9}}" class="img-container"alt="">
+              <div class = "container2">
+                <p>Name: {{data.0.1}}</p>
+                <p>Rating: {{data.0.7}}</p>
+                <p>Author: {{data.0.2}}</p>
+                <p>Artist: {{data.0.3}}</p>
+                <p>Release: {{data.0.4}}</p>
+                <p>Status : {{data.0.5}}</p>
+               
+            </div>
+          </div>
+        </div>
+  
+        <p>Summary</p>
+        <p>{{data.0.6}}</p>
+        <hr>
+        <p>Chapters</p>
+        <hr>
+       <div class="container item-page-container">
+        <ul id="manga-chapters">
+          <li>
+            <a href="/manga/{{data.0.1}}/chapter1/1">Chapter 1</a>
+            <hr>
+          </li>
+          <li>
+            <a href="/manga/{{data.0.1}}/chapter2/1">Chapter 2</a>
+          </li>
+        </ul>
+       
+       </div>
+   
+      
+    </div>
+  </main>
+  
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted">Copyrights and trademarks for the manga, and other promotional materials are held by their respective owners and their use is allowed under the fair use clause of the Copyright Law. © 2021 Mangaudible.</span>
+    </div>
+  </footer>
+{% endblock %}
