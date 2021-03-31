@@ -1,182 +1,239 @@
-{% extends 'base.html' %}
-
-{% block head %}
-    <title>Mangaudible</title>
-{% endblock %}
-
-{% block body %}
+{% extends 'base.html' %} {% block head %}
+<title>Mangaudible</title>
+{% endblock %} {% block body %}
 <main>
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
-      <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
-      <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <img src="https://storage.googleapis.com/mangaudible/temp/arifureta_shokugyou_de_sekai_s.jpg"  class="manga-cover" alt="">
-              <p>Title<span>Chapter 360</span></p>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/arifureta_shokugyou_de_sekai_s.jpg" class="manga-cover" alt="">
+                            <p>Title<span>Chapter 360</span></p>
+                        </div>
+                        <div class="col">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/grand_blue.jpg" class="manga-cover" alt="">
+                            <p>Title<span>Chapter 360</span></p>
+                        </div>
+                        <div class="col">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/world_customize_creator.jpg" class="manga-cover" alt="">
+                            <p>Title<span>Chapter 360</span></p>
+                        </div>
+                        <div class="col">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/isekai_tensei_soudouki.jpg" class="manga-cover" alt="">
+                            <p>Title<span>Chapter 360</span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col">
-              <img src="https://storage.googleapis.com/mangaudible/temp/grand_blue.jpg"  class="manga-cover" alt="">
-              <p>Title<span>Chapter 360</span></p>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/late_bloomer.jpg" class="manga-cover" alt="">
+                            <p>Title<span>Chapter 360</span></p>
+                        </div>
+                        <div class="col">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/kateikyoushi_no_lelouch-san.jpg" class="manga-cover" alt="">
+                            <p>Title<span>Chapter 360</span></p>
+                        </div>
+                        <div class="col">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/koroshi_ai.jpg" class="manga-cover" alt="">
+                            <p>Title<span>Chapter 360</span></p>
+                        </div>
+                        <div class="col">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/overlord.jpg" class="manga-cover" alt="">
+                            <p>Title<span>Chapter 360</span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col">
-              <img src="https://storage.googleapis.com/mangaudible/temp/world_customize_creator.jpg"  class="manga-cover" alt="">
-              <p>Title<span>Chapter 360</span></p>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/tate_no_yuusha_no_nariagari.jpg" class="manga-cover" alt="">
+                            <p>Title<span>Chapter 360</span></p>
+                        </div>
+                        <div class="col">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/tensei_shitara_slime_datta_ken.jpg" class="manga-cover" alt="">
+                            <p>Title<span>Chapter 360</span></p>
+                        </div>
+                        <div class="col">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/tensei_takenaka_hanbei.jpg" class="manga-cover" alt="">
+                            <p>Title<span>Chapter 360</span></p>
+                        </div>
+                        <div class="col">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/imadoki_no_wakai_mon_wa.jpg" class="manga-cover" alt="">
+                            <p>Title<span>Chapter 360</span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col">
-              <img src="https://storage.googleapis.com/mangaudible/temp/isekai_tensei_soudouki.jpg"  class="manga-cover" alt="">
-              <p>Title<span>Chapter 360</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="container">
-          <div class="row ">
-            <div class="col">
-              <img src="https://storage.googleapis.com/mangaudible/temp/late_bloomer.jpg"  class="manga-cover" alt="">
-              <p>Title<span>Chapter 360</span></p>
-            </div>
-            <div class="col">
-              <img src="https://storage.googleapis.com/mangaudible/temp/kateikyoushi_no_lelouch-san.jpg"  class="manga-cover" alt="">
-              <p>Title<span>Chapter 360</span></p>
-            </div>
-            <div class="col">
-              <img src="https://storage.googleapis.com/mangaudible/temp/koroshi_ai.jpg"  class="manga-cover" alt="">
-              <p>Title<span>Chapter 360</span></p>
-            </div>
-            <div class="col">
-              <img src="https://storage.googleapis.com/mangaudible/temp/overlord.jpg"  class="manga-cover" alt="">
-              <p>Title<span>Chapter 360</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="container">
-          <div class="row ">
-            <div class="col">
-              <img src="https://storage.googleapis.com/mangaudible/temp/tate_no_yuusha_no_nariagari.jpg"  class="manga-cover" alt="">
-              <p>Title<span>Chapter 360</span></p>
-            </div>
-            <div class="col">
-              <img src="https://storage.googleapis.com/mangaudible/temp/tensei_shitara_slime_datta_ken.jpg"  class="manga-cover" alt="">
-              <p>Title<span>Chapter 360</span></p>
-            </div>
-            <div class="col">
-              <img src="https://storage.googleapis.com/mangaudible/temp/tensei_takenaka_hanbei.jpg"  class="manga-cover" alt="">
-              <p>Title<span>Chapter 360</span></p>
-            </div>
-            <div class="col">
-              <img src="https://storage.googleapis.com/mangaudible/temp/imadoki_no_wakai_mon_wa.jpg"  class="manga-cover" alt="">
-              <p>Title<span>Chapter 360</span></p>
-            </div>
-          </div>
         </div>
     </div>
-  </div>
-  </div>
-  
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-          <div class="card-body">
-            <h5 class="card-title">Dark card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-          <div class="card-body">
-            <h5 class="card-title">Dark card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-          <div class="card-body">
-            <h5 class="card-title">Dark card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-          <div class="card-body">
-            <h5 class="card-title">Dark card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-          <div class="card-body">
-            <h5 class="card-title">Dark card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-          <div class="card-body">
-            <h5 class="card-title">Dark card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-          <div class="card-body">
-            <h5 class="card-title">Dark card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-          <div class="card-body">
-            <h5 class="card-title">Dark card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Header</div>
-          <div class="card-body">
-            <h5 class="card-title">Dark card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </main>
-  
-  
-  <footer class="footer mt-auto py-3 bg-light">
+
     <div class="container">
-      <span class="text-muted">Copyrights and trademarks for the manga, and other promotional materials are held by their respective owners and their use is allowed under the fair use clause of the Copyright Law. © 2021 Mangaudible.</span>
+        <div class="row">
+            <div class="col">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/imadoki_no_wakai_mon_wa.jpg" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Imadoki no Wakai Mon wa</h5>
+                                <p class="card-text">A sweet story of the overworked office employee Ayumi Mugita...</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/tensei_shitara_slime_datta_ken.jpg" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Tensei shitara Slime datta Ken</h5>
+                                <p class="card-text">Against the odds, the little slime Rimiru has established his magical kingdom for all monsters...</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://storage.googleapis.com/mangaudible/temp/tensei_takenaka_hanbei.jpg" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Tensei Takenaka hanbei maina bushou</h5>
+                                <p class="card-text">The two genius military advisors who led Toyotomi Hideyoshi to unify the nation...</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://storage.googleapis.com/mangaudible/temp/tate_no_yuusha_no_nariagari.jpg" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tate no Yuusha no Nariagari</h5>
+                                    <p class="card-text">Naofumi Iwatani, Naofumi Iwatani, an uncharismatic Otaku who spends his days on games and manga...</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://storage.googleapis.com/mangaudible/temp/koroshi_ai.jpg" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Koroshi Ai</h5>
+                                    <p class="card-text">The silent and stoic Chateau Dankworth is a bounty hunter. Her target: Son Ryang-ha, a notorious killer...</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="https://storage.googleapis.com/mangaudible/temp/rettou_gan_no_tensei_majutsush.jpg" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Rettou Gan No Tensei Majutsushi</h5>
+                                    <p class="card-text">Abel, a boy abandoned by his family because of the fear his unparalleled talent...</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="https://storage.googleapis.com/mangaudible/temp/overlord.jpg" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Overlord</h5>
+                                        <p class="card-text">The final hour of the popular virtual reality game Yggdrasil has come...</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="https://storage.googleapis.com/mangaudible/temp/world_customize_creator.jpg" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">World Customize Creator</h5>
+                                        <p class="card-text">Tagami Yusuke, led by a mysterious voice, is summoned to another world, Caltsio. He was just a young video-game lover...</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="https://storage.googleapis.com/mangaudible/temp/yuukyuu_no_gusha_asley_no_kenj.jpg" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Yuukyuu no Gusha Asley no</h5>
+                                        <p class="card-text">When he was young, he had failed at the Magic Academy and was looked down by others...</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</main>
+
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        <span class="text-muted">Copyrights and trademarks for the manga, and other promotional materials are held by their respective owners and their use is allowed under the fair use clause of the Copyright Law. © 2021 Mangaudible.</span>
     </div>
-  </footer>
+</footer>
 {% endblock %}

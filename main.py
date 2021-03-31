@@ -75,7 +75,7 @@ def adventure(comic = None, chapters=None):
 @app.route('/manga/<comic>/<chapters>/comedy.html')
 def comedy(comic = None, chapters= None):
     query = categoryQuery('comedy')
-    return render_template('adventure.html', data = db.getData(query))
+    return render_template('comedy.html', data = db.getData(query))
 
 @app.route('/sport.html')
 @app.route('/manga/sport.html')
