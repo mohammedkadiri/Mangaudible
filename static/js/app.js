@@ -16,14 +16,14 @@ var x = document.querySelector('#myAudio');
 var timer = null;
 
 
-play_btn.addEventListener("click", function() {
-    x.play();
-});
+// play_btn.addEventListener("click", function() {
+//     x.play();
+// });
 
 
-pause_btn.addEventListener("click", function() {
-    x.pause();
-});
+// pause_btn.addEventListener("click", function() {
+//     x.pause();
+// });
 
 
 
@@ -35,6 +35,7 @@ var img_url = $(".page").attr('src');
 
 search_box.addEventListener('submit', () => {
     var appdir = '/manga/' + search_value.value;
+    console.log('appdir')
     search_box.action = appdir;
 });
 
@@ -123,6 +124,11 @@ $(document).ready(() => {
         update();
         console.log(send_msg);
 
+        if ($(".processed_page").length) {
+            $(".processed_page").remove();
+        }
+
+
         $("#process").toggleClass("progress-bar-clicked");
         $(".progress-bar-striped").css("width", 10 + "%");
         let feedback = document.querySelector("#feedback");
@@ -135,7 +141,7 @@ $(document).ready(() => {
             dataType: 'json'
         }).done(function(data) {
             $(".progress-bar-striped").css("width", 100 + "%");
-            let img_url = `<img src="data:image/png;base64,${data['msg']}" style="width:600px;height:800px">`;
+            let img_url = `<img src="data:image/png;base64,${data['msg']}" class="processed_page"style="width:600px;height:800px">`;
             $(".process-data").after(img_url);
             // $(".process-data").html(data['msg']);
             feedback.textContent = "Processed";
