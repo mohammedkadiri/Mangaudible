@@ -29,6 +29,18 @@ p span {
     color: white
 }
 
+.card-body {
+    margin-left: 15%;
+}
+
+.card {
+    background-color: transparent;
+}
+
+.card-title {
+    color: rebeccapurple;
+}
+
 .carousel-indicators li {
     width: 10px;
     height: 10px;
