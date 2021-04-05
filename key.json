@@ -1,0 +1,12 @@
+{
+    "type": "service_account",
+    "project_id": "mangaudible",
+    "private_key_id": "79778bb09f18c9e678e7d8c51e3a7e4b01f57c26",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDTSPmXob2rAJbc\nMFmROc9kfSwJqlpDKunfbFJ/5K6vYciL/zgpLp+KQLWss78JJ84MfbWFf7Fg+WdH\nHGfcrPukSCW9rEyyfasjUag/TbjK+OJy+sqnOwMf8EOSy7+6ajIXIUK1/N+ELPfr\ngpeShtUSmUjosdDHtm1SoNukzgwQEgFPYGEVV7jz5/jleEMq5J1UBbHMH87cUWCT\nG1HZX41QodH2l5qA4o9rFotrq0iGFTA8khzf+ipPaUTG2iLeIfBY9L+KHsUkMkpc\nSdJkchIipLxmin3eTSyVdOYNWz9Xe6BeTlhSZ6WRSXMlhgXO3yFHCSsw4vAYSYMG\nw74A5yInAgMBAAECggEABfeqrQCxdbH3kNKAxRxH4kOyybcZA4qjvl612czgri1p\n16JmuKsLcIExYGZXP+/y3uFyDgo0PVPt+dEwkcgE93feMQQ7ylLIUaANy3PrgzgS\nVUMGFEETboR/tBazHJXBQmv7EV7KBVarzegLVeUfAX5407Gp/uoFHm9SpM35Az8h\nzPgIi5tVEuKduaI0t+a//F03cFAHW+s8Br2BLU5DwEcZO02mHnEvG8GfxxKqv+P7\nxYbCywHU4xDzjQdtEAK4Jg2lXMmR0yTkdOIk1sMCBHTaaNbe8Kr0eDJ0proAnKsC\nZ6azeAIhVkg9gGUZo2N+G5nf1zLQjfUEbp0pBjX7cQKBgQDrB2LoeQl6z8rLcI8V\n3khQVhhmdybsgw9A6fjqwDCQMK/hlGt060g9V16b/6UIWK5wVLvFAjG7rci/XWfX\nEo7zKh+gvMMNDDgwskMUacnXDweE35tkD6tHSAt4ZmIyEcEVjIb7ZCPUCmH+2Jf5\nPoaoCiOY814oxqZRojMQSiIQWQKBgQDmIzlsfVexCpIZF21YtjWx8BGOnNNPnaLx\nm+wPlBMLKCAzRFC9Jw5rZRP4uu8ttLMAbEItBjgyNPFX6ag4yYegRjv18VOc4y8g\nMgi3fe2wkgqiM6LtD4Lljtb8Wzr50TDrimZB3QhM1jXnATHQMiSKg0u3bxQ7zVcS\ndr1DKzh2fwKBgERji9ZVkfqYiEwWXqxgV+54fvUh6sObh06+Rl4YuojagfND+ti0\ntfqTd8Yw51a8Z1Xscg7riokwEmAMz/B3R/1d3oIpKyCa06bn2DkSZ1ca2ndBkbfW\nD2LYhe3s7Nng7KxWjdiM1RgYRVegsugl140CFkWlW1rGIxNR/UXaLHtRAoGBANIF\nE0KOoJhQrUN4vbFXl2jrTRp4w97EXQ9g2+zblQV5eOlQTt5P5jjb5X34Go37ed/I\n7BtqsZ4f8p/n/DzWrY72iYHI2iUyrq8S+iF6KpAYttuPhAATR8F2uXtTRl71KU/K\n3cb9j7WPR2GpFWyKVg6SA2dDV5O7sNqIwe+qYbzBAoGBALgXtHpI+/fnL5gP4e/3\nrNb/uR9gb5QmF+Buvv5IRuI1D+dpNc/yeq2H718LQxu1qnJwVyygTYPNcA739WSp\n+bAou7GVFDET/CPLssEtTH01hyEr2oJoq+zQw4+YRSWW9JN4MkGJ9npRH22xhZb3\nawcKK6/OvGSCcxasbRQ29gvk\n-----END PRIVATE KEY-----\n",
+    "client_email": "mo-766@mangaudible.iam.gserviceaccount.com",
+    "client_id": "118227861925432822786",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mo-766%40mangaudible.iam.gserviceaccount.com"
+}
