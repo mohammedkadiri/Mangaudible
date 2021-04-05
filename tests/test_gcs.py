@@ -7,6 +7,7 @@ import gcs
 
 class TestGcs(unittest.TestCase):
     
+    # Test all the retrieval of a manga page url and the number of pages in the manga
     def test_retrieve_url(self):
         self.assertEqual(gcs.retrieve_url("mangaudible", "Grand Blue", 1, 2), "https://storage.cloud.google.com/mangaudible/manga/Grand Blue/1/2.jpg")
         self.assertEqual(gcs.retrieve_url("mangaudible", "Dan Blue", 1, 2), "Invalid manga name")

@@ -32,7 +32,7 @@ var server = "http://127.0.0.1:5000";
 var img_data = { 'value': ["text"] };
 var img_url = $(".page").attr('src');
 
-
+// Send a request to server with search entry
 search_box.addEventListener('submit', () => {
     var appdir = '/manga/' + search_value.value;
     console.log('appdir')
@@ -42,6 +42,7 @@ search_box.addEventListener('submit', () => {
 
 $(document).ready(() => {
     $(document).on('change', '#chapter', function() {
+        // Change the chapter option in dropdown menu and update the page content
         url = "https://storage.cloud.google.com/mangaudible/manga/"
         let chapter_value = chapter.options[chapter.selectedIndex].value;
         let page_value = page.options[pager.selectedIndex].value;
@@ -53,6 +54,7 @@ $(document).ready(() => {
     });
 
     $(document).on('change', '#pager', function() {
+        // Change the page option in dropdown menu and update the page content
         url = "https://storage.cloud.google.com/mangaudible/manga/"
         let chapter_value = chapter.options[chapter.selectedIndex].value;
         let page_value = page.options[pager.selectedIndex].value;
@@ -66,6 +68,7 @@ $(document).ready(() => {
 
 
     $(document).on('click', '.prev', function() {
+        // Go back to previous page and update image and dropdown menu
         url = getImageUrl("prev");
         img_url = url;
         page_container.setAttribute('src', url);
@@ -73,6 +76,7 @@ $(document).ready(() => {
     });
 
     $(document).on('click', '.next', function() {
+        // Go back to next page and update image and dropdown menu
         url = getImageUrl("next");
         img_url = url;
         page_container.setAttribute('src', url);
@@ -80,6 +84,7 @@ $(document).ready(() => {
     });
 
     function getImageUrl(x) {
+        // Get the current image and display it 
         url = "https://storage.cloud.google.com/mangaudible/manga/"
         let chapter_value = chapter.options[chapter.selectedIndex].value;
         let page_value = page.options[pager.selectedIndex].value;
@@ -111,6 +116,7 @@ $(document).ready(() => {
 
 
     function update() {
+        // update the image url
         img_data['value'] = img_url;
     }
 
@@ -124,22 +130,24 @@ $(document).ready(() => {
         update();
         console.log(send_msg);
 
+        // Remove the image if a process button is clicked
         if ($(".processed_page").length) {
             $(".processed_page").remove();
         }
-
 
         $("#process").toggleClass("progress-bar-clicked");
         $(".progress-bar-striped").css("width", 10 + "%");
         let feedback = document.querySelector("#feedback");
         feedback.textContent = "Processing";
 
+        // Send a post request to server to process a manga page
         $.ajax({
             type: "POST",
             url: server + appdir,
             data: JSON.stringify(img_data),
             dataType: 'json'
         }).done(function(data) {
+            // Update the page with a processed page 
             $(".progress-bar-striped").css("width", 100 + "%");
             let img_url = `<img src="data:image/png;base64,${data['msg']}" class="processed_page"style="width:600px;height:800px">`;
             $(".process-data").after(img_url);
@@ -147,8 +155,5 @@ $(document).ready(() => {
             feedback.textContent = "Processed";
             $("#process").toggleClass("progress-bar-clicked");
         });
-
-
-
     });
 });

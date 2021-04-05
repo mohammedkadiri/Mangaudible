@@ -50,9 +50,10 @@ def create_folders(filepath, manga_titles):
             full_path = "{0}{1}".format(filepath, title)
             chapter1_path = "{0}{1}/chapter1".format(filepath, title)
             chapter2_path = "{0}{1}/chapter2".format(filepath, title)
-            os.makedirs(full_path)
-            os.makedirs(chapter1_path)
-            os.makedirs(chapter2_path)
+    return chapter1_path
+            # os.makedirs(full_path)
+            # os.makedirs(chapter1_path)
+            # os.makedirs(chapter2_path)
 
 
 def download_manga(manga):
@@ -60,6 +61,8 @@ def download_manga(manga):
     Downloads and stores each manga page.
 
     :param manga: key,pair containing a list of image urls for each manga key
+    E.g manga['Rettou Gan No Tensei Majutsushi Shiitage Rareta Saikyou No Minashigo Ga Isekai De Musou Suru'] 
+    = [https://image.rawdevart.com/comic/rettou-gan-no-tensei-majutsushi-shiitage-rareta-saikyou-no-minashigo-ga-isekai-de-musou-suru/chapters/1/001.jpg]
     :return: None
     '''
     for key in manga.keys():
@@ -84,7 +87,14 @@ with open('../../Documents/Project/Mangaudible/titles.txt') as f:
 chapters = 3
 filepath = "C:/Users/manga/"
 
-manga = scraper(path, manga_titles, chapters)
-print(manga)
-# create_folders(filepath, manga_titles)
+# manga_test = ["late-bloomer"]
+# titles_test = ["Late bloomer"]
+# manga = scraper(manga_test, titles_test, chapters)
+# print(manga["Late bloomer"][0])
+# https://image.rawdevart.com/comic/late-bloomer/chapters/1/001.jpg
+# manga = scraper(path, manga_titles, chapters)
+
+# print(manga)
+# print(create_folders(filepath, titles_test))
+
 # download_manga(manga)

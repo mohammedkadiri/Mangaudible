@@ -123,18 +123,20 @@ def process():
     # google_ocr_text = detect_document_uri(temp)
     # accuracy = calculate_accuracy(panel_text, google_ocr_text)
     # translated_panel_text = translate_ocr_text(google_ocr_text)
+    # process the manga page the user requested 
     img = process_image(temp)
     im_pil = Image.fromarray(img)
     data = io.BytesIO()
     im_pil.save(data, "PNG")
+    # Encode the processed manga page using base64 enconding 
     encoded_img_data = base64.b64encode(data.getvalue())
     img_data=encoded_img_data.decode('utf-8')
     # print(encoded_img_data)
     # resp_dic = {'msg': "Accuracy: " + str(accuracy) +"%Text:\n" + translated_panel_text}
     resp_dic = {'msg': img_data}
-    resp = jsonify(resp_dic)
+    resp = jsonify(resp_dic) 
     resp.headers['Access-Control-Allow-Origin']='*'
-    return resp
+    return resp # Return the decoded processed manga page 
 
 
 #app.run
