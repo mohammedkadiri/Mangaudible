@@ -15,15 +15,23 @@ pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesserac
 
 # Convert url to image with python
 def url_to_image(url):
+    '''
+    Returns an a grayscaled image 
+    :url: URL of an image 
+    '''
     resp = ur.urlopen(url)
     image = np.asarray(bytearray(resp.read()), dtype="uint8")
     image = cv.imdecode(image, cv.IMREAD_GRAYSCALE)
     return image
 
-def panelExtraction(temp):
-    img = temp
+def panelExtraction(img):
+    '''
+    Returns the number of panels within an image
+    :img: Grayscaled image with panels
+    '''
     img_copy = img.copy()
     gray = img_copy
+    # size contains the width, height of the image
     size = list(img_copy.shape[:2])
     size.reverse()
     # print("Width: "+str(size[0]) + " Height: "+str(size[1]))
@@ -58,11 +66,19 @@ def panelExtraction(temp):
 
 
 def sort_panels(panels):
+    '''
+    Returns sorted panels
+    :panels: A list of panels to sort
+    '''
     temp = sorted(panels, key=lambda x: (x[0], x[1]))
     return temp
 
 
 def retrieve_panel_text(url):
+    '''
+    Retrieves the text within each panel in a manga
+    :url: Takes a URL of an image
+    '''
     # convert the url to an image
     img = url_to_image(url)
     if img is None:
@@ -127,6 +143,11 @@ def detect_document_uri(uri):
     return jp_text
 
 def calculate_accuracy(panel_text, google_ocr_text):
+    '''  
+    Returns an percentage of the text in the panels found in google ocr version
+    :panel_text: Text retrieved from panels using custom method
+    :google_ocr_text: Text retrieved using google ocr 
+    '''
     counter = 0
     for char in google_ocr_text:
         if char in panel_text:
@@ -143,6 +164,10 @@ def translate_ocr_text(google_ocr_text):
     return result.text
 
 def process_image(url):
+    '''
+    Returns the processed manga page
+    :url: Takes a URL for a manga page 
+    '''
     image = url_to_image(url)
     # gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY) # grayscale
     thresh = cv.threshold(image, 180, 255, cv.THRESH_BINARY_INV + cv.THRESH_OTSU)[1]
@@ -153,11 +178,14 @@ def process_image(url):
     areas = stats[:, 4]
     maxArea = 200
     minArea = 30
+    # Discards any connected components to small or too large 
     for compLabel in range(1, numLabels):
         if areas[compLabel] > maxArea or areas[compLabel] < minArea:
             labels[labels == compLabel] = 0
     labels[labels > 0] = 1
+    # Apply a kernel to determine if the blob  is a potential speech bubble 
     kernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (30, 30))
+    # Dilate to fill all the blobs with white
     dilate_text = cv.morphologyEx(labels.astype(np.uint8), cv.MORPH_DILATE, kernel)
     comp = cv.connectedComponentsWithStats(dilate_text)
     numLabels = comp[0]
@@ -166,6 +194,7 @@ def process_image(url):
     areas = stats[:, 4]
 
     components = []
+    # Add all the connected components coordinates
     for compLabel in range(1, numLabels):
         x1, y1 = stats[compLabel, 0], stats[compLabel, 1]
         x2, y2 = (stats[compLabel, 0]+stats[compLabel, 2]), (stats[compLabel, 1]+stats[compLabel, 3])
@@ -182,21 +211,27 @@ def process_image(url):
 
     for panel in components:
         x1,y1,x2,y2 = panel
+        # crop each speech bubble 
         temp =  image[y1:y2,x1:x2]
         custom_oem_psm_config = r'--psm 5'
+        # Extract text from the speech bubble 
         text = pytesseract.image_to_string(temp, lang='jpn_vert', config=custom_oem_psm_config)
         pattern = r'[a-zA-Z0-9?|!.,*()-:/\\]'
         text = re.sub(pattern, '', text)
         text = re.sub('\s+', ' ', text)
         words = text.replace(" ", "")
+        # Translate the extracted text 
         result = translator.translate(words, lang_tgt='en')
         # Check if the component actually contains actual jp chars
         # if words.isalpha():
         # print(result)
         org = (int((x1 + x2) / 2), int((y1 + y2) / 2))
+        # Determine the size of the text in english
         (width, height), baseline = cv.getTextSize(result, cv.FONT_HERSHEY_SIMPLEX, 0.7, 2)
         # cv.rectangle(image, (x1, y1), (x2-20, y2-30), (255, 255, 255), cv.FILLED)
+        #Draw a white background around the text
         cv.rectangle(image, (org[0], org[1] - height), (org[0] + width, org[1]), (255, 255, 255), cv.FILLED)
+        # Place the text back into the center of the speech bubble 
         image = cv.putText(image, result, (org[0] - 20, org[1]), cv.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
     return image
@@ -204,11 +239,15 @@ def process_image(url):
 
 # url = "https://storage.googleapis.com/mangaudible/manga/Grand%20Blue/chapter1/10.jpg"
 
+# print( panelExtraction(url_to_image(url)))
+
 # img = process_image(url)
 
 # cv.imshow("image", img)
 # cv.waitKey(0)
 
+# panels = [[16, 1889, 380, 287], [9, 18, 873, 338], [567, 365, 319, 330]]
+# print(sort_panels(panels))
 
 
 # panel_text = retrieve_panel_text(url)
