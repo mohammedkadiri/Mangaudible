@@ -106,7 +106,11 @@ def retrieve_panel_text(url):
 
 def detect_document_uri(uri):
     """Detects document features in the file located in Google Cloud
-    Storage."""
+    Storage.
+    Function code is derived from - 
+    9.	Detect text in a Cloud Storage file [Internet]. Google.com. [cited 2021 Apr 5]. Available from: https://cloud.google.com/vision/docs/samples/vision-text-detection-gcs
+
+    """
     client = vision.ImageAnnotatorClient()
     image = vision.Image()
     image.source.image_uri = uri
