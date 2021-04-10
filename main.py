@@ -103,8 +103,8 @@ def unavailable():
 @app.route('/manga/<string:manga_name>/<string:chapter>/<string:page>')
 def chapter(manga_name, chapter, page):
     manga_name = manga_name.replace("%", " ")
-    pages = page_count("mangaudible", manga_name, chapter);
-    url = retrieve_url("mangaudible", manga_name, chapter, page)
+    pages = page_count("mangaaudible", manga_name, chapter);
+    url = retrieve_url("mangaaudible", manga_name, chapter, page)
     url = url.replace(" ", "%20")
     values = [manga_name, chapter, page, url, pages]
     return render_template('chapter.html', data = values)

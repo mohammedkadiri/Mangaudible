@@ -5,7 +5,7 @@ var page_num = document.querySelector('.page-num');
 var page = document.querySelector('#pager');
 var manga_name = document.querySelector('.current');
 var page_container = document.querySelector('.page');
-var url = "https://storage.cloud.google.com/mangaudible/manga/"
+var url = "https://storage.cloud.google.com/mangaaudible/manga/"
 var prev = document.querySelector('.prev');
 var next = document.querySelector('.next');
 var search_box = document.querySelector('#search-box');
@@ -43,7 +43,7 @@ search_box.addEventListener('submit', () => {
 $(document).ready(() => {
     $(document).on('change', '#chapter', function() {
         // Change the chapter option in dropdown menu and update the page content
-        url = "https://storage.cloud.google.com/mangaudible/manga/"
+        url = "https://storage.cloud.google.com/mangaaudible/manga/"
         let chapter_value = chapter.options[chapter.selectedIndex].value;
         let page_value = page.options[pager.selectedIndex].value;
         manga_name.innerHTML = manga_name.innerHTML.replace(/\s/g, "%20");
@@ -55,7 +55,7 @@ $(document).ready(() => {
 
     $(document).on('change', '#pager', function() {
         // Change the page option in dropdown menu and update the page content
-        url = "https://storage.cloud.google.com/mangaudible/manga/"
+        url = "https://storage.cloud.google.com/mangaaudible/manga/"
         let chapter_value = chapter.options[chapter.selectedIndex].value;
         let page_value = page.options[pager.selectedIndex].value;
         manga_name.innerHTML = manga_name.innerHTML.replace(/\s/g, "%20");
@@ -85,7 +85,7 @@ $(document).ready(() => {
 
     function getImageUrl(x) {
         // Get the current image and display it 
-        url = "https://storage.cloud.google.com/mangaudible/manga/"
+        url = "https://storage.cloud.google.com/mangaaudible/manga/"
         let chapter_value = chapter.options[chapter.selectedIndex].value;
         let page_value = page.options[pager.selectedIndex].value;
         manga_name.innerHTML = manga_name.innerHTML.replace(/\s/g, "%20");
