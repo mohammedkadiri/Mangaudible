@@ -6,7 +6,7 @@ Application Screenshots
 <br>
 <h1> Homepage </h1>
 
-![](images/mangapage.png)
+![](images/homepage.png)
 <!-- <br> -->
 <!-- <h1>Chapter Page </h1>
 ![](images/chapterpage.png)
