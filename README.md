@@ -5,8 +5,9 @@ A web application to extract text from raw manga and translate the text to any d
 Application Screenshots
 <br>
 <h1> Homepage </h1>
-![](images/homepage.png)
-<br>
+
+![](images/mangapage.png)
+<!-- <br> -->
 <!-- <h1>Chapter Page </h1>
 ![](images/chapterpage.png)
 <br>
